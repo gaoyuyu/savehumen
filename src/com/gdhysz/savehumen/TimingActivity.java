@@ -194,7 +194,6 @@ public class TimingActivity extends Activity implements OnClickListener
 		.setView(datePickerLayout)
 		.setPositiveButton("完成",  new DialogInterface.OnClickListener()
 		{
-			
 			@Override
 			public void onClick(DialogInterface dialog, int which)
 			{
