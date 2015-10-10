@@ -208,7 +208,6 @@ public class TimingActivity extends Activity implements OnClickListener
 		})
 		.setNegativeButton("取消", new DialogInterface.OnClickListener()
 		{
-			
 			@Override
 			public void onClick(DialogInterface dialog, int which)
 			{
