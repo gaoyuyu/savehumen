@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string-array name="least_than_oneMin">
+    	<!-- 
+    	<item>刚刚这点时间我忙去了，请叫我励志哥，这是我刚刚坚持的时间：</item>
+    	<item>爱上这软件，让我对手机不再依赖，这是我刚刚坚持的时间：</item>
+    	<item>找不到玩手机的理由，那我选择拒绝手机，这是我刚刚坚持的时间：</item>
+    	
+    	 <item>我刚刚在【远离手机】中坚持了下面这么多时间：</item>
+    	
+    	<item>这是我刚刚坚持使用“远离手机app”的时间：</item>
+    	-->
+    	<item>我刚才远离手机的时间</item>
+    </string-array>
+    
+</resources>

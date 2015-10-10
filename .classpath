@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="lib" path="libs/BmobSDK_V3.3.6_0427.jar"/>
+	<classpathentry kind="lib" path="libs/mframework.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Core-2.5.9.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Douban-2.5.9.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-QQ-2.5.9.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-QZone-2.5.9.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Renren-2.5.9.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-SinaWeibo-2.5.9.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Wechat-2.5.9.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Wechat-Core-2.5.9.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Wechat-Favorite-2.5.9.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Wechat-Moments-2.5.9.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-YouDao-2.5.9.jar"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>

@@ -1,0 +1,29 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="best_score_text">16sp</dimen>
+    <dimen name="last_score_text">16sp</dimen>
+
+    <dimen name="all_btn_size">38sp</dimen>
+
+    <dimen name="main_txt_topleft">13dp</dimen>
+
+    <dimen name="main_btn_margin_left">30dp</dimen>
+    <dimen name="main_btn_margin_right">30dp</dimen>
+    <dimen name="main_btn_margin_bottom">10dp</dimen>
+    
+    <dimen name="main_widgetSpace">100dp</dimen>
+    <dimen name="main_margin_bottom">50dp</dimen>
+    <dimen name="main_btn_width">280dp</dimen>
+    <dimen name="main_time_text">60sp</dimen>
+    
+    <dimen name="result_time_text">40sp</dimen>
+    <dimen name="result_time_marginbottom">75dp</dimen>
+    <dimen name="result_text_endStr">15sp</dimen>
+    <dimen name="result_text_conStr">28sp</dimen>
+    <dimen name="result_texttime_margintop">30dp</dimen>
+
+</resources>
