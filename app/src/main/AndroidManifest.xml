@@ -2,20 +2,82 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.moudle.savehumen">
 
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
     <application
+        android:name=".application.BaseApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".savehumen.MyWebViewActivity"></activity>
+        <activity android:name=".savehumen.DownApkActivity" />
+        <activity android:name=".savehumen.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".savehumen.MenuActivity" />
+        <activity
+            android:name=".savehumen.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".savehumen.ResultActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity android:name=".savehumen.TimingActivity" /> <!-- 设备管理 -->
+        <receiver
+            android:name=".util.LockReceiver"
+            android:description="@string/app_name"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/lock_screen" />
+
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver> <!-- 第三方sdk     start -->
+        <activity
+            android:name="cn.sharesdk.framework.ShareSDKUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <data android:scheme="tencent100371282" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity> <!-- 微信分享回调 -->
+        <activity
+            android:name=".savehumen.wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="cn.bmob.v3.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" /> <!-- 第三方sdk  end -->
+        <service
+            android:name=".service.MonitorService"
+            android:exported="false"
+            android:process=":remote" />
     </application>
 
 </manifest>

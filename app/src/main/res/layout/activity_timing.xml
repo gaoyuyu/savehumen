@@ -1,0 +1,75 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/dateEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:background="@drawable/bg_account_focus"
+        android:ems="10"
+        android:focusable="false"
+        android:gravity="center"
+        android:inputType="none" >
+
+        <requestFocus />
+    </EditText>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal"
+        android:padding="5dp" >
+
+        <EditText
+            android:id="@+id/start"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_account_focus"
+            android:ems="10"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none" >
+
+            <requestFocus />
+        </EditText>
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="50dp"
+            android:src="@drawable/banner" />
+
+        <EditText
+            android:id="@+id/end"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_account_focus"
+            android:ems="10"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none" >
+
+            <requestFocus />
+        </EditText>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/timingChallengeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:text="设置好，去挑战" />
+
+</LinearLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="best_score_text">28sp</dimen>
+    <dimen name="last_score_text">28sp</dimen>
+
+    <dimen name="all_btn_size">50sp</dimen>
+
+    <dimen name="main_time_text">72sp</dimen>
+
+    <dimen name="result_time_text">52sp</dimen>
+    <dimen name="result_text_endStr">27sp</dimen>
+    <dimen name="result_text_conStr">40sp</dimen>
+</resources>
