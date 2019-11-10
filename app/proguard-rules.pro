@@ -54,62 +54,85 @@
     native <methods>;
 }
 
-# 保留枚举类不被混淆
+# 保留枚举 enum 类不被混淆
 -keepclassmembers enum * {
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
 
-# 保留Parcelable序列化类不被混淆
+# 保留 Parcelable 不被混淆
 -keep class * implements android.os.Parcelable {
     public static final android.os.Parcelable$Creator *;
 }
 
+# 保留 Serializable 不被混淆
+-keepnames class * implements java.io.Serializable
 -keepclassmembers class * implements java.io.Serializable {
-   static final long serialVersionUID;
-   private static final java.io.ObjectStreamField[]   serialPersistentFields;
-   private void writeObject(java.io.ObjectOutputStream);
-   private void readObject(java.io.ObjectInputStream);
-   java.lang.Object writeReplace();
-   java.lang.Object readResolve();
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    !static !transient <fields>;
+    !private <fields>;
+    !private <methods>;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
 }
-#assume no side effects:删除android.util.Log输出的日志
--assumenosideeffects class android.util.Log {
-    public static *** v(...);
-    public static *** d(...);
-    public static *** i(...);
-    public static *** w(...);
-    public static *** e(...);
-}
-#保留Keep注解的类名和方法
--keep,allowobfuscation @interface android.support.annotation.Keep
--keep @android.support.annotation.Keep class *
+
+# 不混淆资源类
+-keepclassmembers class **.R$* { *; }
+
+# 对于带有回调函数onXXEvent()的，不能被混淆
 -keepclassmembers class * {
-    @android.support.annotation.Keep *;
+    void *(**On*Event);
+}
+# WebView
+-keepclassmembers class fqcn.of.javascript.interface.for.Webview {
+   public *;
+}
+-keepclassmembers class * extends android.webkit.WebViewClient {
+    public void *(android.webkit.WebView, java.lang.String, android.graphics.Bitmap);
+    public boolean *(android.webkit.WebView, java.lang.String);
+}
+-keepclassmembers class * extends android.webkit.WebViewClient {
+    public void *(android.webkit.WebView, jav.lang.String);
 }
 
-# Retain service method parameters when optimizing.
--keepclassmembers,allowshrinking,allowobfuscation interface * {
-    @retrofit2.http.* <methods>;
+
+#过滤fastjson
+-keep class com.alibaba.fastjson.** { *; }
+-dontwarn com.alibaba.fastjson.**
+
+#过滤okhttp
+-dontwarn com.squareup.okhttp3.**
+-keep class com.squareup.okhttp3.** { *;}
+-dontwarn okio.**
+
+#retrofit
+-dontwarn okio.**
+-dontwarn javax.annotation.**
+#解决使用Retrofit+rxJava联网时，在6.0系统出现java.lang.InternalError奔溃的问题:http://blog.csdn.net/mp624183768/article/details/79242147
+-keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
+    long producerIndex;
+    long consumerIndex;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode producerNode;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode consumerNode;
+}
+#过滤butterknife项目
+-keep class butterknife.** { *; }
+-dontwarn butterknife.internal.**
+-keep class **$$ViewBinder { *; }
+-keepclasseswithmembernames class * {
+    @butterknife.* <fields>;
+}
+-keepclasseswithmembernames class * {
+    @butterknife.* <methods>;
 }
 
-# Ignore annotation used for build tooling.
--dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
-
-# Ignore JSR 305 annotations for embedding nullability information.
--dontwarn javax.annotation.**
-
-# JSR 305 annotations are for embedding nullability information.
--dontwarn javax.annotation.**
-
-# A resource is loaded with a relative path so the package of this class must be preserved.
--keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
-
-# Animal Sniffer compileOnly dependency to ensure APIs are compatible with older versions of Java.
--dontwarn org.codehaus.mojo.animal_sniffer.*
-
-# OkHttp platform used only on JVM and when Conscrypt dependency is available.
--dontwarn okhttp3.internal.platform.ConscryptPlatform
 
 #fastjson混淆
 -keepattributes Signature
@@ -124,3 +147,17 @@
 }
 -dontwarn com.just.agentweb.**
 -keepclassmembers class com.just.agentweb.sample.common.AndroidInterface{ *; }
+
+
+# 对WebView的处理
+-keepclassmembers class * extends android.webkit.webViewClient {
+    public void *(android.webkit.WebView, java.lang.String, android.graphics.Bitmap);
+    public boolean *(android.webkit.WebView, java.lang.String);
+}
+-keepclassmembers class * extends android.webkit.webViewClient {
+    public void *(android.webkit.webView, java.lang.String);
+}
+# 保留JS方法不被混淆
+-keepclassmembers class com.example.xxx.MainActivity$JSInterface1 {
+    <methods>;
+}
