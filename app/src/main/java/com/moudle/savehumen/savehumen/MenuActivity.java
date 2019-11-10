@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.moudle.savehumen.R;
 import com.moudle.savehumen.util.LockReceiver;
@@ -20,7 +21,7 @@ import cn.bmob.v3.update.UpdateResponse;
 
 public class MenuActivity extends Activity implements OnClickListener
 {
-	
+
 	private Button normalBtn;
 	private Button timingBtn;
 	private Button infiniteBtn;
@@ -54,14 +55,14 @@ public class MenuActivity extends Activity implements OnClickListener
 				}
 				isFromInfiniteBtn = false;
 			}
-			
+
 			@Override
 			public void onScreenOn()
 			{
 				// TODO Auto-generated method stub
 				Log.i(TAG, "onScreenOn");
 			}
-			
+
 			@Override
 			public void onScreenOff()
 			{
@@ -84,10 +85,10 @@ public class MenuActivity extends Activity implements OnClickListener
 		timingBtn.setOnClickListener(this);
 		// 点击按钮进行手动更新操作
 		mUpdateBtn.setOnClickListener(this);
-		
+
 		infiniteBtn.setOnClickListener(this);
 	}
-	
+
 	@Override
 	protected void onResume()
 	{
@@ -108,7 +109,8 @@ public class MenuActivity extends Activity implements OnClickListener
 			redirectActivity(MainActivity.class);
 			break;
 		case R.id.timingBtn:
-			redirectActivity(TimingActivity.class);
+//			redirectActivity(TimingActivity.class);
+			Toast.makeText(MenuActivity.this,"该功能开发中，敬请期待！",Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.infiniteBtn:
 			lockTheScreen();
@@ -130,7 +132,7 @@ public class MenuActivity extends Activity implements OnClickListener
 		Intent intent = new Intent(MenuActivity.this,cls);
 		startActivity(intent);
 	}
-	
+
 	public void lockTheScreen()
 	{
 		mDevicePolicyManager = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
