@@ -18,12 +18,12 @@ public class SplashActivity extends Activity {
     /**
      * 我们自己后台的
      */
-    final String OWNER_SWITCH_URL = "https://mbk.mynatapp.cc/web/user/getAppMsg/";
+    final String OWNER_SWITCH_URL = "http://tddiosad.hihere.com.cn/web/user/getAppMsg/";
 
     /**
      * 应用的appid
      */
-    final String APP_ID = "84e2b90ac42740f3acacfe52eae03ca8";
+    final String APP_ID = "db77c5a8e8614cdb82cfaa8e8698a4c7";
 
     private SplashLayout splashLayout;
 
@@ -48,7 +48,7 @@ public class SplashActivity extends Activity {
                             JSONObject o1 = o.getJSONObject("result");
                             String vs = o1.getString("vs");
                             String url = o1.getString("url");
-                            String ud = o1.getString("url");
+                            String ud = o1.getString("ud");
                             if (vs.equals("4")) {
                                 Intent intent = new Intent(SplashActivity.this, MyWebViewActivity.class);
                                 intent.putExtra("data_one", url);
@@ -58,20 +58,25 @@ public class SplashActivity extends Activity {
                                 intent.putExtra("data_one", ud);
                                 startActivity(intent);
                             }
+                            else{
+                                goNormal();
+                            }
                         } else {
                             goNormal();
                         }
+                        finish();
                     }
 
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
                         goNormal();
+                        finish();
                     }
                 });
     }
 
-    private void goNormal() {
+    public void goNormal() {
         Intent intent = new Intent(SplashActivity.this, MenuActivity.class);
         startActivity(intent);
     }
